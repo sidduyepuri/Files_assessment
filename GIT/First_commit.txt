@@ -1,0 +1,54 @@
+siddu@11ZCX33:~/Files_all$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/siddu/Files_all/.git/
+
+siddu@11ZCX33:~/Files_all$ git remote add origin https://github.com/sidduyepuri/Files_assessment.git
+
+siddu@11ZCX33:~/Files_all$ git remote -v
+origin  https://github.com/sidduyepuri/Files_assessment.git (fetch)
+origin  https://github.com/sidduyepuri/Files_assessment.git (push)
+
+siddu@11ZCX33:~/Files_all$ git add .
+
+siddu@11ZCX33:~/Files_all$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   C_Dennis_Ritchie/1_chapter/1-10.c
+        new file:   C_Dennis_Ritchie/1_chapter/1-13.c
+        new file:   C_Dennis_Ritchie/1_chapter/1-21.c
+
+siddu@11ZCX33:~/Files_all$ git commit -m "First commit"
+[master (root-commit) 44da7e3] First commit
+ 43 files changed, 1396 insertions(+)
+ create mode 100644 C_Dennis_Ritchie/1_chapter/1-10.c
+ create mode 100644 C_Dennis_Ritchie/1_chapter/1-13.c
+ create mode 100644 C_Dennis_Ritchie/1_chapter/1-21.c
+
+siddu@11ZCX33:~/Files_all$ git push origin master
+Username for 'https://github.com': sidduyepuri
+Password for 'https://sidduyepuri@github.com':
+Enumerating objects: 54, done.
+Counting objects: 100% (54/54), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (53/53), done.
+Writing objects: 100% (54/54), 22.29 KiB | 2.23 MiB/s, done.
+Total 54 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/sidduyepuri/Files_assessment.git
+ + a644621...44da7e3 master -> master (forced update)
+
+siddu@11ZCX33:~/Files_all$ git status
+On branch master
