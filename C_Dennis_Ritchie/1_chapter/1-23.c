@@ -1,21 +1,24 @@
-#include <stdio.h>
 /*Exercise 1-23. Write a program to remove all comments from a C program. Don't forget to 
-handle quoted strings and character constants properly. C comments don't nest. */
+  handle quoted strings and character constants properly. C comments don't nest. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 10-April-2024
+ * Modified: 10-April-2024
  * */
-#define MAXSTR 10000
 
+/* REQUIRED HEADER FILES */
+#include <stdio.h>
+
+/* MACRO DEFINITIONS	*/
+#define MAXSTR 10000
 #define TRUE (1 == 1)   /* Define TRUE */
 #define FALSE !TRUE     /* Define FALSE */
 
-// This is a test comment.
-
+// Function prototypes
 int get_str(char str[], int limit); // This is another test comment.
 void remove_comments(char str[], char no_com_str[]);
 
+/* MAIN FUNCTION */
 int main(void) 
 {
 	/**

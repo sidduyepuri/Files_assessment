@@ -1,19 +1,24 @@
-#include <stdio.h>
-#include <stdio.h>
+
 /*Exercise 3-3. Write a function expand(s1,s2) that expands shorthand notations like a-z in 
 the string s1 into the equivalent complete list abc...xyz in s2. Allow for letters of either 
 case and digits, and be prepared to handle cases like a-b-c and a-z0-9 and -a-z. Arrange 
 that a leading or trailing - is taken literally.*/
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 16 April, 2024
+ * Modified: 16 April, 2024
  * */
+
+/* REQUIRED HEADER FILES */
+#include <stdio.h>
+#include <stdio.h>
 
 // Function prototype for expand
 void expand(char str1[], char str2[]);
 
-int main() {
+/* MAIN FUNCTION */
+int main() 
+{
     char str1[100], str2[100]; // Declaration of input and output strings
     
     // Input a string until newline character and store it in str1

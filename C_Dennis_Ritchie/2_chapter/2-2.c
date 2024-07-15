@@ -1,12 +1,19 @@
-#include <stdio.h>
-#define LIMIT 1000
 //Exercise 2-2. Write a loop equivalent to the for loop above without using && or ||.
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 12-April-2024
+ * Modified: 12-April-2024
  * */
-int main() {
+
+/* REQUIRED HEADER FILES */
+#include <stdio.h>
+
+/* MACRO DEFINITIONS	*/
+#define LIMIT 1000
+
+/* MAIN FUNCTIONS	*/
+int main() 
+{
     int i, c;
     char s[LIMIT];
     int condition_met = 0; // Flag to indicate whether loop termination condition has been met

@@ -1,15 +1,18 @@
-#include <stdio.h>
+
 /* Exercise 2-8. Write a function rightrot(x,n) that returns the value of the integer x rotated to the right by n positions. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 15 April, 2024
+ * Modified: 15 April, 2024
  * */
+// REQUIRED HEADER FILES
+#include <stdio.h>
 
 // Function prototype
 int rightrotate(unsigned int x, int p);
 void printbinary(int x, int size);
 
+//MAIN FUNCTION
 int main() {
     int x;
     int p;

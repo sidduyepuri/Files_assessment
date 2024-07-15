@@ -3,15 +3,19 @@ into visible escape sequences like \n and \t as it copies the string t to s. Use
 a function for the other direction as well, converting escape sequences into the real characters.	*/
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 16 April, 2024
+ * Modified: 16 April, 2024
  * */
 
+/* REQUIRED HEADER FILES */
 #include <stdio.h>
 
-#define LINELEN 1000  // Length of the paragraph as macro
+/* MACRO DEFINITIONS */
+#define LINELEN 1000
 
-int main() {
+/* MAIN FUNCTION */
+int main() 
+{
     int c, i = 0, j = 0;  // Declaration and initialization of integer variables
     char lines[LINELEN];  // Declaration of character array to store input
 

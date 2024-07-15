@@ -1,85 +1,118 @@
-#include<stdio.h>
+/* Exercise 1-22. Write a program to ``fold'' long input lines into two or more shorter lines after 
+the last non-blank character that occurs before the n-th column of input. Make sure your 
+program does something intelligent with very long lines, and if there are no blanks or tabs 
+before the specified column.
+ * Author: Yepuri Siddu
+ * Created: 8-April-2024
+ * Modified: 8-April-2024
+ * */
 
-#define MAXCOL 50   /* Maximum column width */
-#define TABVAL 8    /* Tab value */
+/*REQUIRED HEADER FILES */
+#include <stdio.h>
 
-char line[MAXCOL];  /* Character array to store input line */
+/* MACRO DEFINITIONS */
+#define MAXLINE 10000 
+#define TRUE (1 == 1) 
+#define FALSE !TRUE
+#define BREAKING_POINT 10 
+#define OFFSET 10
 
-/* Function prototypes */
-int expandtab(int pos);
-int printline(int pos);
-int getblank(int pos);
-int newposition(int pos);
+/* Function Prototypes	*/
+int get_line(char line[], int max_line_len);
+void fold_line(char line[], char fold_str[], int n_break);
 
-int main(void) 
+int main(void)
 {
-	int pos, c;
-	pos = 0;
+    char line[MAXLINE];      // Array to hold the input line
+    char fold_str[MAXLINE];  // Array to hold the folded line
 
-	/* Loop to read characters until EOF */
-	while ((c = getchar()) != EOF) {
-		line[pos] = c;  /* Store character in the line buffer */
+    // Read lines from input until EOF
+    while ((get_line(line, MAXLINE)) > 0)
+    {
+        // Fold the line at the defined breaking point and store it in fold_str
+        fold_line(line, fold_str, BREAKING_POINT);
+        // Print the folded line
+        printf("%s", fold_str);
+    }
 
-		if (c == '\t')  /* If character is a tab */
-			pos = expandtab(pos);   /* Expand tab to spaces */
-
-		if (c == '\n') {    /* If character is a newline */
-			printline(pos); /* Print the line */
-			pos = 0;        /* Reset position */
-		} else if (++pos >= MAXCOL) {  /* If reached maximum column width */
-			pos = getblank(pos);    /* Find the last blank position */
-			printline(pos);         /* Print the line */
-			pos = newposition(pos); /* Update position */
-		}
-	}
-	return 0;
+    return 0; // Return 0 to indicate successful execution
 }
 
-/* Function to expand tabs to spaces */
-int expandtab(int pos) 
+// Function to read a line from input
+int get_line(char line[], int max_line_len)
 {
-	line[pos] = ' ';    /* Replace tab with space */
-	for (++pos; (pos < MAXCOL) && ((pos % TABVAL) != 0); ++pos)
-		line[pos] = ' ';    /* Fill remaining spaces till next tab stop */
-	if (pos >= MAXCOL) {    /* If reached maximum column width */
-		printline(pos); /* Print the line */
-		return 0;       /* Reset position */
-	} else {
-		return pos;     /* Return updated position */
-	}
+    int c, i = 0;
+
+    // Read characters until max line length, EOF, or newline is encountered
+    while (i < max_line_len - 1 && (c = getchar()) != EOF && c != '\n')
+    {
+        line[i++] = c;
+    }
+
+    // If newline is encountered, add it to the line
+    if (c == '\n')
+    {
+        line[i++] = c;
+    }
+
+    line[i] = '\0'; // Null-terminate the line
+
+    return i; // Return the length of the line
 }
 
-/* Function to print the line */
-int printline(int pos) 
+// Function to fold a line at the given breaking point
+void fold_line(char line[], char fold_str[], int n_break)
 {
-	int i;
-	for (i = 0; i < pos; ++i)
-		putchar(line[i]);   /* Output each character */
-	if (pos > 0)
-		putchar('\n');  /* Output newline if line is not empty */
-}
+    int i, j;               // Indices for input line and folded line
+    int column = 0;         // Current column position in the line
+    int split = FALSE;      // Flag to indicate if the line should be split
+    int last_blank = 0;     // Position of the last blank character
 
-/* Function to find the last blank position */
-int getblank(int pos) {
-	if (pos > 0)
-		while (line[pos] != ' ')    /* Search for the last blank */
-			--pos;  /* Move backward in the line buffer */
-	if (pos == 0)
-		return MAXCOL;  /* Return MAXCOL if no blanks found */
-	else
-		return pos + 1; /* Return position after the last blank */
-}
+    // Loop through each character in the input line
+    for (i = 0, j = 0; line[i] != '\0'; ++i, ++j)
+    {
+        fold_str[j] = line[i]; // Copy character to the folded line
 
-/* Function to update position */
-int newposition(int pos) {
-	int i, j;
-	if (pos <= 0 || pos >= MAXCOL)
-		return 0;   /* Return 0 if position is out of bounds */
-	else {
-		i = 0;
-		for (j = pos; j < MAXCOL; ++j, ++i)
-			line[i] = line[j];  /* Copy characters after last blank to the beginning of line buffer */
-	}
-	return i;   /* Return new position */
+        if (fold_str[j] == '\n') // Reset column if newline is encountered
+        {
+            column = 0;
+        }
+
+        column++; // Increment the column position
+
+        if (column == n_break - OFFSET) // Check if near the breaking point
+        {
+            split = TRUE; // Set the split flag
+        }
+
+        // Track the position of the last blank character for potential split
+        if (split && (fold_str[j] == ' ' || fold_str[j] == '\t'))
+        {
+            last_blank = j;
+        }
+
+        // If the breaking point is reached
+        if (column == n_break)
+        {
+            if (last_blank) // If there was a blank character to split at
+            {
+                fold_str[last_blank] = '\n'; // Replace blank with newline
+                column = j - last_blank;     // Adjust the column position
+                last_blank = 0;              // Reset last blank position
+            }
+            else // If no blank character to split at
+            {
+                fold_str[j++] = line[i]; // Copy current character
+                fold_str[j++] = '-';     // Add a hyphen
+                fold_str[j] = '\n';      // Add a newline
+
+                column = 0; // Reset the column position
+            }
+
+            split = FALSE; // Reset the split flag
+        }
+    }
+
+    fold_str[j] = '\0'; // Null-terminate the folded line
 }
 

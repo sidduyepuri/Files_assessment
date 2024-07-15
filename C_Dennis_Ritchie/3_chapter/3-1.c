@@ -1,16 +1,18 @@
-#include <stdio.h>
-#include <ctype.h>
+
 /*Exercise 3-1. Our binary search makes two tests inside the loop, when one would suffice (at the price of more tests outside.) Write a version with only one test inside the loop and measure the difference in run-time. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 16 April, 2024
+ * Modified: 16 April, 2024
  * */
+/* REQUIRED HEADER FILES */
+#include <stdio.h>
+#include <ctype.h>
 
-/* *MACRO DEFINITIONS */
+/* MACRO DEFINITIONS */
 #define ARRSIZE 100
 
-/* * MAIN FUNCTION */
+/* MAIN FUNCTION */
 int main() {
     char str[ARRSIZE];  // Input string
     int i = 0, j = 0, k, flag = 0;  // Variables for looping, searching, and flag for indicating search result

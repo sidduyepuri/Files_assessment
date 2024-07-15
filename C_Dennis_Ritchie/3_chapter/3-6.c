@@ -3,8 +3,8 @@ argument is a minimum field width; the converted number must be padded with blan
 left if necessary to make it wide enough. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 17 April, 2024
+ * Modified: 17 April, 2024
  * */
 
 /* *HEADER FILES */
@@ -45,7 +45,7 @@ void str_rev(char str[]) {
     // Loop through the string and swap characters
     for (i = 0; i < j; i++, j--) {
         // Skip spaces while swapping
-        while (str[i] == ' ')
+        while (str[i] == '*')
             i++;
         
         // Swap characters
@@ -67,7 +67,7 @@ void itoa(int n, char str[], int len) {
 
     // Fill the initial characters of str with spaces if necessary to match the minimum field width
     for (i = 0; i < len - cnt; i++)
-        str[j++] = ' ';
+        str[j++] = '*';
 
     // Convert the number to string
     while (n) {

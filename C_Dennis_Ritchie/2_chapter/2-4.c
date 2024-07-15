@@ -2,13 +2,15 @@
 s1 that matches any character in the string s2. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 12-April-2024
+ * Modified: 12-April-2024
  * */
+/* REQUIRED HEADER FILES */
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
+/* MACRO DEFINITIONS */
 #define MAXSIZE 100
 
 // Function prototype for removing duplicate characters
@@ -17,6 +19,7 @@ void remove_duplicates(char str1[], char str2[]);
 // Function prototype for converting string to lowercase
 void str_lwr(char str[]);
 
+/* MAIN FUNCTION */
 int main() 
 {
 	char str1[MAXSIZE], str2[MAXSIZE];

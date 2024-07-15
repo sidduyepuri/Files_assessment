@@ -1,15 +1,17 @@
 /*Exercise 2-6. Write a function setbits(x,p,n,y) that returns x with the n bits that begin at position p set to the rightmost n bits of y, leaving the other bits unchanged. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 15-April-2024
+ * Modified: 15-April-2024
  * */
+
 //* Required Header
 #include <stdio.h>
 
 //Function prototypes
 void printbinary(int num, int size);
 
+/* main function */
 int main() 
 {
     int x, y, p, n, temp;

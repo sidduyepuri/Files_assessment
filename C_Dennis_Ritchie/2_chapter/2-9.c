@@ -1,10 +1,14 @@
-#include <stdio.h>
+
 /*Exercise 2-10. Rewrite the function lower, which converts upper case letters to lower case, with a conditional expression instead of if-else. */
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 15 April, 2024
+ * Modified: 15 April, 2024
  * */
+
+/* REQUIRED HEADER FILES */
+#include <stdio.h>
+
 /* * MAIN FUNCTION */
 int main()
 {

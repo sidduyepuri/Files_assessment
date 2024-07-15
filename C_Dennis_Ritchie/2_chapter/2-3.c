@@ -1,18 +1,22 @@
 //Exercise 2-3. Write a function htoi(s), which converts a string of hexadecimal digits (including an optional 0x or 0X) into its equivalent integer value. The allowable digits are 0 through 9, a through f, and A through F.
 /*
  * Author: Yepuri Siddu
- * Created: 8-may-2024
- * Modified: 8-may-2024
+ * Created: 12-April-2024
+ * Modified: 12-April-2024
  * */
 
+/* REQUIRED HEADER FILES */
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
 
+/* MACRO DEFINITIONS */
 #define MAXSIZE 100
 
-int main() {
+/* MAIN FUNCTIONS */
+int main() 
+{
     int i, num = 0, temp, result = 0, flag = 0;
     char str[MAXSIZE];
 
